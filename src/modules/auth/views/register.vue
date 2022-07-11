@@ -17,6 +17,7 @@
         type="text"
         class="form__input"
         placeholder="Full Name"
+        required
         v-model="name"
       />
     </div>
@@ -37,10 +38,11 @@
         type="email"
         class="form__input"
         placeholder="Your email"
+        required
         v-model="email"
       />
     </div>
-    <div class="form__group mb-15px">
+    <!-- <div class="form__group mb-15px">
       <svg
         width="13"
         height="15"
@@ -57,10 +59,12 @@
         type="password"
         class="form__input"
         placeholder="Password"
+        required
         v-model="password"
       />
       <span class="form__text-absolute">hide</span>
-    </div>
+    </div> -->
+    <inputPassword @input="newValue => password = newValue" />
     <button type="submit" class="btn btn--full-width btn--blues mb-15px">
       Create Free Account
     </button>
@@ -87,9 +91,13 @@
 import { convertDateTimezoneHelper } from "@/helper/dateHelper";
 import uerApi from "@/api/userApi";
 import { setCookieHelper } from "@/helper/cookieHelper";
+import inputPassword from "@/components/inputs/inputPassword.vue";
 
 export default {
   name: "auth-views-regiser",
+  components:{
+    inputPassword,
+  },
   data: function () {
     return {
       email: "",

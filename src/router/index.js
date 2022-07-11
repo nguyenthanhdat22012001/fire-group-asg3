@@ -79,7 +79,6 @@ router.beforeEach(async (to, from, next) => {
       return;
     }
   }
-  console.log('next')
   next();
 });
 

@@ -17,30 +17,11 @@
         type="email"
         class="form__input"
         placeholder="Your email"
+        required
         v-model="email"
       />
     </div>
-    <div class="form__group mb-15px">
-      <svg
-        width="13"
-        height="15"
-        viewBox="0 0 13 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M10.9375 6.875H10.2812V4.90625C10.2812 2.63672 8.39453 0.75 6.125 0.75C3.82812 0.75 1.96875 2.63672 1.96875 4.90625V6.875H1.3125C0.574219 6.875 0 7.47656 0 8.1875V13.4375C0 14.1758 0.574219 14.75 1.3125 14.75H10.9375C11.6484 14.75 12.25 14.1758 12.25 13.4375V8.1875C12.25 7.47656 11.6484 6.875 10.9375 6.875ZM7.21875 11.4688C7.21875 12.0977 6.72656 12.5625 6.125 12.5625C5.49609 12.5625 5.03125 12.0977 5.03125 11.4688V10.1562C5.03125 9.55469 5.49609 9.0625 6.125 9.0625C6.72656 9.0625 7.21875 9.55469 7.21875 10.1562V11.4688ZM8.09375 6.875H4.15625V4.90625C4.15625 3.83984 5.03125 2.9375 6.125 2.9375C7.19141 2.9375 8.09375 3.83984 8.09375 4.90625V6.875Z"
-          fill="#CECECE"
-        />
-      </svg>
-      <input
-        type="password"
-        class="form__input"
-        placeholder="Password"
-        v-model="password"
-      />
-      <span class="form__text-absolute">hide</span>
-    </div>
+ <inputPassword @input="newValue => password = newValue" />
     <div class="flex-center-between mb-15px">
       <div class="form__group-checkbox">
         <input type="checkbox" id="rememberMe" class="form__input-radio" />
@@ -60,16 +41,25 @@
         Facebook Account
       </button>
     </div>
-    <p>Don't have an account? <router-link :to="{name: 'register'}">Create a Free Account </router-link></p>
+    <p>
+      Don't have an account?
+      <router-link :to="{ name: 'register' }"
+        >Create a Free Account
+      </router-link>
+    </p>
   </form>
 </template>
 <script>
 import { convertDateTimezoneHelper } from "@/helper/dateHelper";
 import uerApi from "@/api/userApi";
 import { setCookieHelper } from "@/helper/cookieHelper";
+import inputPassword from "@/components/inputs/inputPassword.vue";
 
 export default {
   name: "auth-views-login",
+    components:{
+    inputPassword,
+  },
   data: function () {
     return {
       email: "",
@@ -96,21 +86,21 @@ export default {
         const res = await uerApi.loginUser(payload);
         if (res.status) {
           setCookieHelper("access_token", res.data.token, 1);
-          this.$store.commit('auth/setUser',payload);
+          this.$store.commit("auth/setUser", payload);
           await this.$router.push("product").catch(() => {});
         }
       } catch (e) {
         throw e;
       }
     },
+    onChangeTypePassword: function () {
+      if (this.$refs.password.type == "text") {
+        this.$refs.password.type = "password";
+      } else {
+        this.$refs.password.type = "text";
+      }
+    },
   },
-  // watch: {
-  //   email: function (newValue) {
-  //     if (this.errors.isError) {
-  //       this.onValidatePixelName(newValue);
-  //     }
-  //   },
-  // },
 };
 </script>
 <style lang="scss" scoped></style>
