@@ -1,0 +1,5 @@
+.drop-down{
+    cursor: pointer;
+    @include flexbox(center);
+    gap: 4px;
+}

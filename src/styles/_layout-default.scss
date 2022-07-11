@@ -1,0 +1,75 @@
+.layout-default {
+  @include flexbox();
+  &__aside {
+    width: 16%;
+    border-right: 1px solid #e2e2e2;
+    height: $height;
+  }
+  &__main {
+    flex: 1;
+  }
+  &__logo {
+    padding-top: 13px;
+    padding-left: 15px;
+  }
+  &__navbar {
+    margin-top: 30px;
+  }
+  &__navbar-item {
+    @include flexbox(center);
+    cursor: pointer;
+    gap: 12px;
+    padding: 10px 12px;
+    color: $text-gray;
+    & svg {
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+  &__navbar-item.active {
+    color: $text-blues;
+    background-color: #ebf1ff;
+  }
+  // main
+  &__header {
+    background-color: $bgr-white;
+    padding: 13px 20px;
+  }
+  &__avatars {
+    @include flexbox();
+  }
+  &__avatar-drop {
+    @include flexbox(center);
+    gap: 9px;
+    padding-right: 18px;
+    border-right: 1px solid #f3f3f3;
+  }
+
+  &__body {
+    padding: 30px 55px;
+  }
+  &__top {
+    margin-bottom: 25px;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  &__list-action {
+    @include flexbox();
+    gap: 15px;
+  }
+  &__list-action-search {
+    width: 494px;
+  }
+  &__list-action-select {
+    @include flexbox();
+  }
+
+  &__table {
+    margin: 26px 0;
+    border: 1px solid #e5e8ef;
+    border-radius: 3px;
+  }
+}

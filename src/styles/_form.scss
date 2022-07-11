@@ -1,0 +1,76 @@
+.form {
+  &__group {
+    position: relative;
+    width: 100%;
+    @include flexbox(center);
+    background-color: $bgr-white;
+    padding: 10px 13px;
+    border: 1px solid #ebebf0;
+    border-radius: 2px;
+    gap: 10px;
+  }
+  &__input {
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    padding-right: 30px;
+    &::placeholder {
+      color: $text-gray;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__text-absolute {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  // checkbox
+  &__group-checkbox {
+    @include flexbox(center);
+  }
+  &__label-radio {
+    margin-left: 7px;
+    margin-bottom: 0;
+  }
+  &__input-radio {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #cecece;
+    margin: 0;
+  }
+  // select
+  &__select {
+    // width: 100%;
+    padding: 12px 27px 12px 14px;
+    border: 0.5px solid #E5E8EF;
+    border-radius: 4px;
+    font-weight: 600;
+    appearance: none;
+    background-color: $bgr-white;
+    background-image: url(../assets/images/icons/down.svg);
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 50%;
+    &:focus {
+      outline: none;
+    }
+    &--sort{
+      padding: 12px 12px 12px 31px;
+      background-image: url(../assets/images/icons/sort.svg);
+      background-position-x: 14px;
+      background-position-y: 50%;
+    }
+    &--small{
+      font-weight: 400;
+      padding: 8px 25px 8px 9px;
+    }
+  }
+  
+}

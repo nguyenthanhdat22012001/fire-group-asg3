@@ -1,0 +1,23 @@
+.avatar{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    @include flexbox(center,center);
+    border-radius: 32px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    &--blues{
+        background-color: $bgr-blues;
+        color: $text-white;
+    }
+    &--green{
+        background-color: #95BF47;
+        color: $text-white;
+    }
+    & svg {
+        path{
+          fill: currentColor; 
+        }
+    }
+}

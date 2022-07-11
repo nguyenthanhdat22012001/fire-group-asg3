@@ -1,0 +1,40 @@
+.status{
+    &--has-doc{
+        position: relative;
+        color: $text-green;
+    }
+    &--has-doc::before{
+        position: absolute;
+        content: '';
+        width: 5px;
+        height: 5px;
+        top: 50%;
+        left: -10px;
+        transform: translateY(-50%);
+        border-radius: 100%;
+    }
+    &--has-doc-green::before{
+        background-color: $bgr-green;
+    }
+    &--has-doc-gray::before{
+        background-color: $bgr-gray;
+    }
+    &--padding{
+        padding: 3px 8px;
+    }
+    &--bgr-green{
+        background-color: $text-green-light;
+    }
+    &--bgr-red{
+        background-color: $text-red-light;
+    }
+    &--text-green{
+        color: $text-green;
+    }
+    &--text-gray{
+        color: $text-gray-light;
+    }
+    &--text-red{
+        color: $text-red;
+    }
+}

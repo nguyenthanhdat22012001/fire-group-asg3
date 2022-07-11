@@ -1,0 +1,82 @@
+.table {
+  height: 500px;
+  overflow: auto;
+  table {
+    width: 100%;
+    border-style: hidden;
+    td,
+    th {
+      text-align: left;
+      border-bottom: 1px solid #e5e8ef;
+      background-color: $bgr-white;
+      padding: 32px 12px 28px 12px;
+    }
+    th {
+      font-weight: 600;
+      vertical-align: middle;
+      color: $text-gray;
+    }
+    td {
+      vertical-align: middle;
+      padding: 20px 12px 20px 12px;
+    }
+    td:nth-child(3){
+        text-align: center;
+    }
+  }
+
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #828282;
+    // accent-color:$bgr-orange;
+  }
+  &__img {
+    width: 40px;
+    height: 40px;
+  }
+  &__product{
+    @include flexbox(center,flex-start,10px);
+  }
+  &__product-content{
+    @include flexbox(flex-start,flex-start,3px,nowrap,column);
+  }
+  &__product-id{
+    font-size: 12px;
+    color: $text-gray;
+  }
+  &__quantity{
+    @include flexbox(flex-start,flex-start,5px,nowrap,column);
+  }
+  &__text-red{
+    color: $text-red;
+  }
+  &__text-gray{
+    color: $text-gray;
+  }
+  &__text-underline{
+    text-decoration: underline;
+  }
+
+  &__user{
+    table {
+      th,td{
+        padding: 20px 25px;
+        text-align: left;
+      }
+      th {
+        font-weight: 600;
+        color: $text-black-medium;
+      }
+      td:nth-child(3){
+        text-align: left;
+    }
+    }
+    &-title{
+      font-weight: 700;
+    }
+  }
+  &__list-action{
+    @include flexbox(flex-start,flex-start,10px);
+  }
+}
