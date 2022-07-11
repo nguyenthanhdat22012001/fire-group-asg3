@@ -63,6 +63,15 @@ a{
     @include flexbox(center,space-between); 
 }
 
+
+.flex-center-evenly{
+    @include flexbox(center,space-evenly); 
+}
+
+.flex-column{
+    @include flexbox(flex-start,flex-start,0,nowrap,column); 
+}
+
 .flex-center-gap-5px{
     @include flexbox(center,flex-start,5px); 
 }

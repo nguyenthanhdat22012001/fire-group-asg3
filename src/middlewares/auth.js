@@ -1,7 +1,8 @@
 import store from "@/store/index";
 
-let isAuthenticated = true;
+
 export default async function ({ next }) {
+  let isAuthenticated = true;
   // console.log("111", store.getters["auth/isLogged"]);
 
   if (!store.getters["auth/isLogged"]) {
@@ -9,6 +10,7 @@ export default async function ({ next }) {
     isAuthenticated = store.getters["auth/isLogged"];
   }
   // console.log("222", store.getters["auth/isLogged"]);
+  // console.log("333", isAuthenticated);
   // let isAuthenticated
   if (!isAuthenticated) {
     next({ name: "login" });

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Auth from "@/middlewares/auth";
+import Auth from "@/middlewares/auth";
 
 Vue.use(VueRouter);
 
@@ -12,18 +12,18 @@ const routes = [
       import(
         /* webpackChunkName: "product" */ "../modules/product/views/index.vue"
       ),
-    // meta: {
-    //   middleware: [Auth],
-    // },
+    meta: {
+      middleware: [Auth],
+    },
   },
   {
     path: "/user",
     name: "user",
     component: () =>
       import(/* webpackChunkName: "user" */ "../modules/user/views/index.vue"),
-    // meta: {
-    //   middleware: [Auth],
-    // },
+    meta: {
+      middleware: [Auth],
+    },
   },
   {
     path: "/login",
@@ -79,7 +79,7 @@ router.beforeEach(async (to, from, next) => {
       return;
     }
   }
-
+  console.log('next')
   next();
 });
 

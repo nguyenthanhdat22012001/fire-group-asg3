@@ -2,17 +2,20 @@
   @include flexbox();
   &__aside {
     width: 16%;
-    border-right: 1px solid #e2e2e2;
+  border-right: 1px solid #E2E2E2;
     height: $height;
   }
   &__main {
     flex: 1;
   }
   &__logo {
+    width: 100%;
     padding-top: 13px;
     padding-left: 15px;
   }
   &__navbar {
+    width: 100%;
+    flex: 1;
     margin-top: 30px;
   }
   &__navbar-item {
@@ -28,8 +31,34 @@
     }
   }
   &__navbar-item.active {
+    position: relative;
     color: $text-blues;
     background-color: #ebf1ff;
+  }
+  &__navbar-item.active::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 0px 6px 6px 0px;
+    background-color: $bgr-blues;
+  }
+  &__navbar-bottom{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  &__navbar-item-service{
+    color: $text-gray;
+    & svg {
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+  &__navbar-item-service.active{
+    color: $text-blues;
   }
   // main
   &__header {
