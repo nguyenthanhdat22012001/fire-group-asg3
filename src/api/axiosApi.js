@@ -18,7 +18,7 @@ axios.isCancel = instance.isCancel;
 axios.interceptors.request.use(function (config) {
   let token = getCookieHelper("access_token");
   if (token) {
-    config.headers["Authorization"] = "Bearer " + token;
+    config.headers["Authorization"] =  token;
   }
 
   return config;

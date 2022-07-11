@@ -1,7 +1,6 @@
 import uerApi from "@/api/userApi";
 
 const state = {
-  //   is_logged: false,
   user: null,
 };
 
@@ -25,7 +24,6 @@ const actions = {
     /* eslint-disable */
     try {
       const res = await uerApi.fecthUser();
-      console.log('ssa');
       if (res.status) {
         await commit("setUser", res.data);
       }

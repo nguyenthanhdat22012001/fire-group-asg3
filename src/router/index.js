@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Auth from "@/middlewares/auth";
+import noAuth from "@/middlewares/noAuth";
+import store from "@/store/index";
 
 Vue.use(VueRouter);
 
@@ -32,6 +34,7 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../modules/auth/views/login.vue"),
     meta: {
       layout: "auth",
+      middleware: [noAuth],
     },
   },
   {
@@ -43,9 +46,20 @@ const routes = [
       ),
     meta: {
       layout: "auth",
+      middleware: [noAuth],
     },
   },
 ];
+
+const emptyFn = () => { }
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(
+	location,
+	onComplete = emptyFn,
+	onAbort = emptyFn,
+) {
+	return originalPush.call(this, location, onComplete, onAbort)
+}
 
 const router = new VueRouter({
   mode: "history",
@@ -61,7 +75,7 @@ router.beforeEach(async (to, from, next) => {
   if (to.meta.middleware) {
     const middleware = to.meta.middleware;
 
-    const payload = { to, from, next };
+    const payload = { to, from, next ,store,router};
 
     let preventNext = false;
 

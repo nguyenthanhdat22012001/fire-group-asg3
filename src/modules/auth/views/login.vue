@@ -86,8 +86,7 @@ export default {
         const res = await uerApi.loginUser(payload);
         if (res.status) {
           setCookieHelper("access_token", res.data.token, 1);
-          this.$store.commit("auth/setUser", payload);
-          await this.$router.push("product").catch(() => {});
+          await this.$router.push("product");
         }
       } catch (e) {
         throw e;

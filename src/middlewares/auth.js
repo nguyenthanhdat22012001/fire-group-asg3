@@ -1,7 +1,7 @@
-import store from "@/store/index";
+// import store from "@/store/index";
 
 
-export default async function ({ next }) {
+export default async function ({ next, store }) {
   let isAuthenticated = true;
   if (!store.getters["auth/isLogged"]) {
     await store.dispatch("auth/fecthUserAction");
