@@ -1,4 +1,5 @@
 .avatar{
+    position: relative;
     cursor: pointer;
     width: 32px;
     height: 32px;
@@ -19,5 +20,32 @@
         path{
           fill: currentColor; 
         }
+    }
+    &__drop-down{
+        position: absolute;
+        content: '';
+        top: 100%;
+        right: 0%;
+        width: 150px;
+        overflow: hidden;
+        background-color: $bgr-white;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.25s ease-in;
+    }
+    &:hover &__drop-down{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    &__drop-item{
+        cursor: pointer;
+        padding: 15px 20px;
+        border-bottom: 1px solid #ccc;
+        color: $text-gray;
+        font-weight: 500;
+        transition: all 0.25s ease;
+    }
+    &__drop-item:hover{
+        color: $text-blues;
     }
 }

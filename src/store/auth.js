@@ -1,4 +1,5 @@
 import uerApi from "@/api/userApi";
+import {deleteCookieHelper} from "@/helper/cookieHelper";
 
 const state = {
   user: null,
@@ -33,7 +34,8 @@ const actions = {
       }
     }
   },
-  logout({}) {
+  logoutAction({ commit }) {
+    deleteCookieHelper("access_token");
     commit("setUser", null);
   },
 };

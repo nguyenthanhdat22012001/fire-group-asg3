@@ -77,19 +77,19 @@ router.beforeEach(async (to, from, next) => {
 
     const payload = { to, from, next ,store,router};
 
-    let preventNext = false;
+    let prevent_next = false;
 
     for (let i = 0; i < middleware.length; i++) {
       const result = await middleware[i](payload);
 
       if (!result) {
-        preventNext = true;
+        prevent_next = true;
 
         break;
       }
     }
 
-    if (preventNext) {
+    if (prevent_next) {
       return;
     }
   }

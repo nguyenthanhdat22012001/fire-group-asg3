@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="form__group mb-15px">
+  <div class="form__group">
     <svg
       width="13"
       height="15"
@@ -16,7 +16,6 @@
       type="password"
       class="form__input"
       placeholder="Password"
-      required
       ref="password"
       v-model="password"
     />
@@ -26,7 +25,13 @@
 <script>
 export default {
   name: "input-password",
-  props: ["value"],
+  // props: ["value"],
+  props: {
+    value: {
+      type: String,
+      default: "",
+    },
+  },
   computed: {
     password: {
       get() {
