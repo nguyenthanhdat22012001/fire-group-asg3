@@ -23,16 +23,22 @@
       </div>
       <div class="form__status-error" v-if="formstate">
         <template v-if="!validation.form.email.required"
-          >email is required !</template
-        >
+          >email is required !
+        </template>
+        <template v-else-if="!validation.form.email.minLength"
+          >email is  min 6 character !
+        </template>
       </div>
     </div>
     <div class="mb-15px">
       <inputPassword @input="(newValue) => (form.password = newValue)" />
       <div class="form__status-error" v-if="formstate">
         <template v-if="!validation.form.password.required"
-          >Password is required !</template
-        >
+          >Password is required !
+        </template>
+        <template v-else-if="!validation.form.password.minLength"
+          >Password is min 6 character !
+        </template>
       </div>
     </div>
     <div class="flex-center-between mb-15px">
@@ -66,7 +72,7 @@
 import uerApi from "@/api/userApi";
 import { setCookieHelper } from "@/helper/cookieHelper";
 import inputPassword from "@/components/inputs/inputPassword.vue";
-import {notifyAuth} from "@/helper/notify";
+import { notifyAuth } from "@/helper/notify";
 
 export default {
   name: "auth-views-login",
@@ -99,10 +105,10 @@ export default {
           setCookieHelper("access_token", res.data.token, 1);
           await this.$router.push("product");
           this.is_loading = false;
-          notifyAuth('success','login success');
+          notifyAuth("success", "login success");
         }
       } catch (e) {
-        notifyAuth('error',e.data.message);
+        notifyAuth("error", e.data.message);
         this.is_loading = false;
       }
     },
@@ -111,16 +117,22 @@ export default {
     validation() {
       const email = {
         required: this.form.email ? true : false,
+        minLength: this.form.email.length >= 6 ? true : false,
       };
       const password = {
         required: this.form.password ? true : false,
+        minLength: this.form.password.length >= 6 ? true : false,
       };
       return {
         form: {
           email,
           password,
         },
-        valid: email.required && password.required,
+        valid:
+          email.required &&
+          email.minLength &&
+          password.required &&
+          password.minLength,
       };
     },
   },
