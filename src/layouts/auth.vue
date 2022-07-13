@@ -10,11 +10,8 @@
       <img src="@/assets/images/art_work.png" alt="" />
     </div>
     <div class="login-register__contain">
-      <h2 class="login-register__title">Hi, Welcome Back!</h2>
-      <div class="login-register__body">
         <!-- router  -->
-        <router-view />
-      </div>
+        <router-view /> 
     </div>
   </div>
 </template>

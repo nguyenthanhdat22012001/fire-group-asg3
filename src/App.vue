@@ -1,10 +1,8 @@
 <template>
-  <div id="app">
-    <div class="wrapper">
+  <div id="app" class="wrapper">
       <div class="container">
         <vue-extend-layouts />
       </div>
-    </div>
     <notifications group="auth" position="top center" />
   </div>
 </template>
